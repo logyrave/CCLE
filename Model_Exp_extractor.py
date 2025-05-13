@@ -6,20 +6,23 @@ model_to_extract = []
 for i in model['Name'] : 
     model_to_extract.append(i)
     
-names = pd.read_csv("Model.csv")
+names = pd.read_csv("../Model.csv")
 
 filtered = names[names['StrippedCellLineName'].isin(model_to_extract)]
 names_list = filtered['ModelID'].tolist()        
 
+print(len(names_list))
+
+''' # To get PR- ID
 profils = pd.read_csv("OmicsDefaultModelProfiles.csv")
 buffer = profils[profils['ModelID'].isin(names_list)]
 profil_list = buffer['ProfileID'].tolist()  
-
+'''
 #print(profil_list)
 #print(len(profil_list))
     
 with open("id_list.txt", "w") as f:
-    for item in profil_list:
+    for item in names_list:
         f.write(f"{item}\n")
     
 print ("####### DONE ####### ")
