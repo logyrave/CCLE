@@ -20,3 +20,4 @@ data[data < 0] <- 0
 any(data < 0)
 
 write.csv(data,"RNA_seq_filtered.csv")
+
